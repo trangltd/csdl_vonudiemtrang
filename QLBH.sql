@@ -349,6 +349,7 @@ WHERE CTHD.MASP=SP.MASP AND HD.SOHD=CTHD.SOHD AND YEAR(NGHD)=2006
 --17. In ra danh sách các sản phẩm (MASP,TENSP) do “Trung Quoc” sản xuất không bán được trong năm 2006.
 SELECT MASP,TENSP
 FROM SANPHAM
+WHERE NUOCSX='Trung Quoc'
 EXCEPT
 SELECT SP.MASP,TENSP
 FROM SANPHAM SP, CTHD, HOADON HD
@@ -360,7 +361,7 @@ FROM HOADON
 WHERE YEAR(NGHD)=2006 AND NOT EXISTS
                           (SELECT *
                            FROM SANPHAM
-                           WHERE NUOCSX='Sigapore' AND MASP NOT IN (SELECT MASP
+                           WHERE NUOCSX='Singapore' AND MASP NOT IN (SELECT MASP
                                                                     FROM CTHD
                                                                     WHERE CTHD.SOHD=HOADON.SOHD))
 
