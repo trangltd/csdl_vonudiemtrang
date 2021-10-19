@@ -540,8 +540,8 @@ FROM  KHACHHANG
 WHERE MAKH IN (SELECT HD.MAKH
                FROM  HOADON HD, KHACHHANG KH
                WHERE HD.MAKH=KH.MAKH AND DOANHSO IN (SELECT TOP 10 DOANHSO
-                                                   FROM  KHACHHANG
-                                                   ORDER BY DOANHSO DESC) 
+                                                     FROM  KHACHHANG
+                                                     ORDER BY DOANHSO DESC) 
                GROUP BY HD.MAKH
                HAVING COUNT(SOHD)>=ALL(SELECT  COUNT(SOHD)
                                        FROM  HOADON HD, KHACHHANG KH
